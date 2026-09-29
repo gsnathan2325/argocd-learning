@@ -7,9 +7,18 @@ spec:
   project: default
 
   source:
-    repoURL: 
+    repoURL: https://github.com/gsnathan2325/argocd-learning.git
     targetRevision: HEAD
     path: dev
-  destination:
-      server:
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: myapp
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true 
 
